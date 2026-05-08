@@ -1,0 +1,28 @@
+<h1>{{title}}</h1>
+<p>Welcome to {{title}}</p>
+<h1>Welcome to ReadIt</h1>
+<h2>The current time is {{ currentTime }}</h2>
+<ul>
+  {{#each posts}}	
+  <li>	
+    <a href="/post/{{ slug }}">{{ title }} [{{ vote }}] by {{ author }} ({{ comments.length }} comments)</a>	
+  </li>
+  {{/each}}
+</ul>
+
+
+<form action="/post/new" method="POST">	
+  <div>		
+    Title: <input type="text" name="title" />	
+  </div>	
+  <div>		
+    <label for="content">Content: </label>		
+    <textarea name="content"></textarea>	
+  </div>	
+  <div>		
+    <label for="author">Author: </label>		
+    <input type="text" name="author"/>	
+</div>	
+  <input type="submit"/>
+</form>
+Collapse file‎views/post.hbs‎Copy file name to clipboard+22Lines changed: 22 additions & 0 deletionsOriginal file line numberDiff line numberDiff line change@@ -0,0 +1,22 @@<a href="/">Back</a><h1>{{ title }} {{ vote }}</h1><h2>{{ author }}</h2><h3>Vote <a href="/post/{{ slug }}/vote/up">Up</a> / <a href="/post/{{ slug }}/vote/down">Down</a></h3><p>{{ content }}</p><h3>Comments</h3><ul>{{#each comments}}	<li>{{ name }} said: "{{ comment }}"</li>{{/each}}</ul><form action="/post/{{ slug }}/comment/add" method="POST">	<div>		Name: <input type="text" name="name"/>	</div>	<div>		Comment: <textarea name="comment"></textarea>	</div>	<input type="submit"/></form>
