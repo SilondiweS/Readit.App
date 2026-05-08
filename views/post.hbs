@@ -1,0 +1,22 @@
+<a href="/">Back</a>
+<h1>{{ title }} {{ vote }}</h1>
+<h2>{{ author }}</h2>
+<h3>Vote <a href="/post/{{ slug }}/vote/up">Up</a> / <a href="/post/{{ slug }}/vote/down">Down</a></h3>
+<p>{{ content }}</p>
+
+<h3>Comments</h3>
+<ul>
+{{#each comments}}
+	<li>{{ name }} said: "{{ comment }}"</li>
+{{/each}}
+</ul>
+
+<form action="/post/{{ slug }}/comment/add" method="POST">
+	<div>
+		Name: <input type="text" name="name"/>
+	</div>
+	<div>
+		Comment: <textarea name="comment"></textarea>
+	</div>
+	<input type="submit"/>
+</form>
